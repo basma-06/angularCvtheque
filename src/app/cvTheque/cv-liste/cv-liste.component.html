@@ -1,0 +1,12 @@
+<h2>Liste des CV</h2>
+<ol class="list-group">
+    <li (selectedPersonne)="selectPersonne(personne)" (click)="selectPersonne(personne)" class="list-group-item" *ngFor="let personne of personnes">
+        <img src="assets/images/{{ personne.image }}" 
+        width="50" 
+        alt="{{ personne.firstname|titlecase }}" 
+        class="src">
+        {{ personne.name|titlecase }} {{ personne.firstname|titlecase }}
+    </li>
+</ol>
+
+

@@ -1,0 +1,12 @@
+<h2>Liste des personnes embauchées : </h2>
+<div *ngIf="personnes">
+    <span *ngFor="let personne of personnes" >
+        <img src="assets/images/{{ personne.image }}" 
+        width="150" 
+        alt="{{ personne.firstname|titlecase }}" 
+        class="rounded-circle">
+        {{ personne.name|titlecase }} {{ personne.firstname }}
+    </span>
+</div>
+
+<button (click)="goToCV()">Go to CV</button>

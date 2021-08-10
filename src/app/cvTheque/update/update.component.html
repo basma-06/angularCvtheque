@@ -1,0 +1,22 @@
+
+<form #formulaire="ngForm" *ngIf="personne" novalidate>
+    <label for="name" >Name</label>
+    <input required type="text" id="name" class="form-control" [(ngModel)]="personne.name" name="name">
+
+    <label for="firstname" >Firsname</label>
+    <input required type="text" id="firstname" class="form-control" [(ngModel)]="personne.firstname" name="firstname">
+
+    <label for="job" >Job</label>
+    <input required type="text" id="job" class="form-control" [(ngModel)]="personne.job" name="job">
+
+    <label for="age" >Age</label>
+    <input required type="number" id="name" class="form-control" [(ngModel)]="personne.age" name="age">
+
+    <label for="cin" >Cin</label>
+    <input required type="number" id="cin" class="form-control" [(ngModel)]="personne.cin" name="cin">
+
+    <label for="path" >Path</label>
+    <input type="text" id="path" class="form-control" [(ngModel)]="personne.image" name="image">
+
+    <button class="btn btn-primary" (click)="updatePersonne()" >Valider</button>
+</form>

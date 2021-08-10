@@ -1,0 +1,16 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "angularDatabase": {
+    "host": "cabinetwhiroot.mysql.db",
+    "port": "3306",
+    "password": "b16yasmineA",
+    "url": "",
+    "database": "cabinetwhiroot",
+    "user": "cabinetwhiroot",
+    "connector": "mysql"
+  }
+  
+}
