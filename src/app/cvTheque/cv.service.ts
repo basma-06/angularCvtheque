@@ -16,7 +16,7 @@ export class CvService {
     
     //@todo datas de test à retirer plus tard
     this.personnes = [
-      new Personne(1, 'basma', 'achi', 37, 'fleur.jpg', 2, 'developper'),
+      new Personne(1, 'charles', 'saad', 40, 'fleur.jpg', 2, 'DEVOPS'),
       new Personne(2, 'solene', 'joly', 37, 'tim_logo.png', 2, 'Assistant developper'),
     ];
   }

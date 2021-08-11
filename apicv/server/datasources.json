@@ -4,12 +4,12 @@
     "connector": "memory"
   },
   "angularDatabase": {
-    "host": "cabinetwhiroot.mysql.db",
+    "host": "localhost",
     "port": "3306",
-    "password": "b16yasmineA",
+    "password": "",
     "url": "",
-    "database": "cabinetwhiroot",
-    "user": "cabinetwhiroot",
+    "database": "firstAngular",
+    "user": "root",
     "connector": "mysql"
   }
   
