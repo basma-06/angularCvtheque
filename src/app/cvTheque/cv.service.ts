@@ -1,18 +1,32 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpXsrfTokenExtractor} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Personne } from '../Model/Personne';
+import { Movie } from '../Model/Movie';
+import { environment } from 'src/environments/environment';
+
+const optionRequete = {
+  headers: new HttpHeaders({ 
+    'Access-Control-Allow-Origin':'*'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class CvService {
+  api_url = environment.API_URL;
+  api_url_laravel = environment.API_URL_LARAVEL;
+  api_url_images = environment.API_URL_IMAGES;
+
   private personnes: Personne[];
-  //Adresse de notre API loopback
-  link ="http://localhost:3000/api/Personne";
 
   //On va consulter l'API loopback via le service HttpClient d'Angular
-  constructor(private http: HttpClient) { 
+  constructor(
+    private http: HttpClient,
+    private tokenService: HttpXsrfTokenExtractor
+    ) { 
     
     //@todo datas de test à retirer plus tard
     this.personnes = [
@@ -22,12 +36,23 @@ export class CvService {
   }
 
   /* 
-  * Methode HTTP GET qui va retourner un tableau de type Personne 
-  * Observable qui retourne un tableau de Personne
-  * @return array de type Personne
+  * Methode HTTP GET qui va retourner un tableau de type Movie 
+  * Definition d'un Observable qui va accéder à l'API Laravel et 
+  * charger les données dans le Model Movie
+  * Le subscribe à cet Observavle est fait dans le cv-container.component.ts qui communique avec la vue
+  * @return array de type Movie
   */
-  getPersonnes(): Observable<Personne[]> {
-    return this.http.get<Personne []>(this.link);    
+  getPersonnes(): Observable<Movie[]> {
+    return this.http.get<Movie []>(this.api_url_laravel);    
+  }
+
+  /* 
+  * Methode HTTP POST du service HttpClient 
+  * Ajout d'une Film dans la base de données via un backend Laravel
+  * @return void
+  */
+  addPersonne() {
+    document.location.href = this.api_url_laravel + 'movies/create';
   }
 
   /*
@@ -37,18 +62,7 @@ export class CvService {
   * @return array de type Personne
   */  
   getPersonneById(id: number): Observable<Personne> {
-    return this.http.get<Personne>(this.link + '/'+ id);
-  }
-
-  /* 
-    * Methode HTTP POST du service HttpClient 
-    * Ajout d'une personne dans la base de données via une API link
-    * @param link URL de l'API
-    * @param object de type Personne
-    * @return Observable de type any
-    */
-  addPersonne(personne: Personne): Observable<any> {
-    return this.http.post(this.link, personne);
+    return this.http.get<Personne>(this.api_url_laravel + '/'+ id);
   }
 
   /* 
@@ -59,7 +73,7 @@ export class CvService {
     * @return Observable de type any
     */
   updatePersonne(personne: Personne) {
-    return this.http.put(this.link, personne);
+    return this.http.put(this.api_url_laravel, personne);
   }
 
   /* 
@@ -69,7 +83,7 @@ export class CvService {
     * @return Observable de type any
     */
   deletePersonne(id: number) {
-    return this.http.delete(this.link + '/${id}');
+    return this.http.delete(this.api_url_laravel + '/${id}');
   }
 
   /*
@@ -78,6 +92,8 @@ export class CvService {
   getFakePersonnes() {
     return this.personnes;
   }
+
+
 
 
 }

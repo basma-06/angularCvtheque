@@ -9,7 +9,6 @@ import { LoginComponent } from "./login/login.component";
 //objet de type Routes
 const APP_ROUTING: Routes = [
     {path : 'cv', redirectTo: '/', pathMatch: 'full' }, 
-    //{path : 'cv:default', redirectTo: '/', pathMatch: 'full' }, //route avec un parametre
     {path : 'cv/updateCv/:id', component: UpdateComponent},
     {path : '', component: CvContainerComponent }, //par defaut
     {path : 'login2', component: LoginComponent },

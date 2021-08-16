@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CvService } from '../cv.service';
+import { HttpXsrfTokenExtractor} from '@angular/common/http';
 
 @Component({
   selector: 'app-add-cv',
@@ -11,31 +11,20 @@ import { CvService } from '../cv.service';
   
 export class AddCvComponent implements OnInit {
   errorMessage = '';
+  token = '';
+  link = "http://127.0.0.1:8000/"; //old code, utiliser environement
   constructor(
     private cvService: CvService,
-    private router: Router
+    private router: Router,
+    private tokenService: HttpXsrfTokenExtractor
     ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    this.token = this.tokenService.getToken();
   }
 
-  /*
-  * Inscription à l'Observable
-  */
-  addPersonne(formulaire: NgForm) {
-    this.cvService.addPersonne(formulaire.value).subscribe(
-      //si ajout de Personne avec succes redirection vers liste des cv
-      (response) => {
-
-      },
-      (error) => {
-        this.errorMessage = "Probleme de connexion au serveur";
-        console.log(error);
-      }
-    );
-    const link = ['cv'];
-    this.cvService.addPersonne(formulaire.value);
-    this.router.navigate(link);
-    console.log(formulaire);
+  addPersonne() {
+    //const token = this.tokenService.getToken();
+    document.location.href = this.link + 'movies/create';
   }
 }

@@ -1,25 +1,3 @@
-<div *ngIf="errorMessage" class="alert alert-danger">
-    {{errorMessage}}
-</div>
-<h2>Ajouter un CV</h2>
-<form #formulaire="ngForm" novalidate>
-    <label for="name" >Name</label>
-    <input required type="text" id="name" class="form-control" ngModel name="name">
+<h1>Administration</h1>
 
-    <label for="firstname" >Firsname</label>
-    <input required type="text" id="firstname" class="form-control" ngModel name="firstname">
-
-    <label for="job" >Job</label>
-    <input required type="text" id="job" class="form-control" ngModel name="job">
-
-    <label for="age" >Age</label>
-    <input required type="number" id="name" class="form-control" ngModel name="age">
-
-    <label for="cin" >Cin</label>
-    <input required type="number" id="cin" class="form-control" ngModel name="cin">
-
-    <label for="path" >Path</label>
-    <input type="text" id="path" class="form-control" ngModel name="image">
-
-    <button class="btn btn-primary" (click)="addPersonne(formulaire)" >Valider</button>
-</form>
+<button class="btn btn-primary" (click)="addPersonne()" >Ajouter un Film</button>

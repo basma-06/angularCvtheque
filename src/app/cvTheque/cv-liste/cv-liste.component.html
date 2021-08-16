@@ -1,12 +1,12 @@
-<h2>Liste des CV</h2>
+<h2>Liste des Films : (Selectionnez votre film)</h2>
 
 <ol class="list-group">
-    <li (selectedPersonne)="selectPersonne(personne)" (click)="selectPersonne(personne)" class="list-group-item" *ngFor="let personne of personnes">
-        <img src="assets/images/{{ personne.image }}" 
+    <li  (click)="selectMovie(movie)" class="list-group-item" *ngFor="let movie of movies">
+        <img src="{{api_url_images }}{{ movie.image }}" 
         width="50" 
-        alt="{{ personne.firstname|titlecase }}" 
+        alt="{{ movie.titre|titlecase }}" 
         class="src">
-        {{ personne.name|titlecase }} {{ personne.firstname|titlecase }}
+        {{ movie.titre|titlecase }} 
     </li>
 </ol>
 

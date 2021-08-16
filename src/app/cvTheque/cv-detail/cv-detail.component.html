@@ -1,18 +1,18 @@
-<div class="col-md-12 col-sm-12" *ngIf="personne">
+<div class="col-md-12 col-sm-12" *ngIf="movie">
     <div class="card-container">
        <div class="card">
            <div class="front">
                <div class="cover">
-                   <img src="assets/images/{{ personne.image }}">
+                   <img src="{{ api_url_images }}{{ movie.image }}">
                </div>
                <div class="user">
-                   <img class="img-circle" src="assets/images/rotating_card_profile3.png">
+                   <img class="img-circle" src="{{ api_url_images }}{{ movie.image }}">
                </div>
                <div class="content">
                    <div class="main">
-                       <h3 class="name">{{ personne?.name|titlecase }} {{ personne?.firstname|titlecase }} {{ personne?.age }} (ans)</h3>
-                       <p class="profession">{{ personne.job }}</p>
-                       <p class="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love me everywhere"</p>
+                       <h3 class="name">{{ movie.titre|titlecase }} </h3>
+                       <p class="description">Catégorie : {{ movie.categorie }}</p>
+                       <p class="text-center">{{ movie.description }}</p>
                    </div>
                    <div class="footer">
                        <i class="fa fa-mail-forward"></i> Auto Rotation
@@ -25,8 +25,8 @@
                </div>
                <div class="content">
                    <div class="main">
-                       <h4 class="text-center">Job Description</h4>
-                       <p class="text-center">Web design, Adobe Photoshop, HTML5, CSS3, Corel and many others...</p>
+                       <h4 class="text-center">Description</h4>
+                       <p class="text-center">{{ movie.description }}</p>
 
                        <div class="stats-container">
                            <div class="stats">
@@ -53,9 +53,9 @@
                </div>
                <div class="footer">
                    <div class="social-links text-center">
-                      <button (click)="embaucher()" class="btn btn-success">Embaucher</button>
-                      <button (click)="updatePersonne(personne.id)" class="btn btn-success">Modifier</button>
-                   </div>
+                     <button class="btn btn-primary" (click)="addPersonne()" >Ajouter un Film</button> 
+                     <button (click)="updateMovie(movie.id)" class="btn btn-success">Modifier</button>
+                    </div>
                </div>
            </div> <!-- end back panel -->
        </div> <!-- end card -->

@@ -1,11 +1,28 @@
 <div class="row">
     <div class="col-md-6 col-sm-3">
-        <app-cv-liste (selectedPersonne)="selectPersonne($event)" [personnes]="personnes"></app-cv-liste>
+        <app-cv-liste (selectedMovie)="selectMovie($event)" [movies]="movies"></app-cv-liste>
     </div>
     <div class="col-md-6 col-sm-9">
-        <app-cv-detail [personne]="selectedPersonne" ></app-cv-detail>
+        <app-cv-detail [movie]="selectedMovie" ></app-cv-detail>
     </div>
 </div>
+<!--<div class="row">
+    <app-embauche (selectedMovie)="selectMovie($event)" [movie]="selectedMovie"></app-embauche>
+</div>-->
+<h2>Liste des  films provenant du backed Laravel 8</h2>
 <div class="row">
-    <app-embauche></app-embauche>
+    <div *ngFor="let movie of movies" class="card" style="width: 15rem;" class="col-md-6 col-sm-3">
+        <img class="card-img-top" style="width: 20%" src="{{ api_url_images }}{{ movie.image }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{ movie.titre|titlecase }}</h5>
+          <p class="card-text">{{ movie.description|titlecase }}</p>
+          <div class="row">
+            <div class="col-md-12 col-sm-3">
+                <p></p>
+              <a href="#" (click)="updateMovie(movie.id)" class="btn btn-primary">Modifier</a>
+-            </div>
+          </div>
+        </div>
+      </div>
 </div>
+

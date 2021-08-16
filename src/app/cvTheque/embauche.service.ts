@@ -4,8 +4,14 @@ import { Personne } from '../Model/Personne';
 @Injectable({
   providedIn: 'root'
 })
+
+/**
+ * Old code à supprimer
+ */
+
 //Service avec toutes les fonctionnalité d'embauche de debauche
 export class EmbaucheService {
+  
   /* definition variable privée de type Personne tableau vide*/
   private personnes: Personne[];
   constructor() {

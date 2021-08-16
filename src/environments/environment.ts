@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API_URL: 'http://localhost:4200/', //url angular
+  API_URL_LARAVEL: 'http://127.0.0.1:8000/',
+  API_URL_IMAGES: `http://127.0.0.1:8000/images/`, //url vers repertoire images de laravel en local
 };
 
 /*
